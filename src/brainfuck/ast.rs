@@ -1,8 +1,8 @@
 
 use super::*;
 use itertools::Itertools;
-
-#[derive(Copy, Debug)]
+use rayon::prelude::*;
+#[derive(Clone, Copy, Debug)]
 pub enum Instruction {
     Dtcp,
     Dtcg,
@@ -11,11 +11,7 @@ pub enum Instruction {
     Chgc(isize),
     Mvcp(isize),
     Setc(u8),
-}
-impl Clone for Instruction {
-    fn clone(&self) -> Self {
-        return *self
-    }
+    Jmpc(usize),
 }
 
 #[derive(Debug)]
@@ -26,8 +22,7 @@ pub enum Code {
 
 pub fn tokenize(src: &str) -> Vec::<Commands> { 
     src
-    .chars()
-    .into_iter()
+    .par_chars()
     .filter_map(|c|{
         match c {
             '+' => Some(Commands::Incr),
@@ -95,7 +90,7 @@ pub fn build_ast(src: &mut impl Iterator::<Item=Instruction>) -> Vec::<Code> {
     vec
 }
 
-pub fn dump_tabbed(ast: &Vec::<Code>, w: &mut impl std::io::Write, tablevel: i32) -> std::io::Result<()> {
+pub fn dump_tabbed(ast: &[Code], w: &mut impl std::io::Write, tablevel: i32) -> std::io::Result<()> {
 
     for code in ast {
         match code {
@@ -122,6 +117,6 @@ pub fn dump_tabbed(ast: &Vec::<Code>, w: &mut impl std::io::Write, tablevel: i32
     }
     Ok(())
 }
-pub fn dump(ast: &Vec::<Code>, w: &mut impl std::io::Write) -> std::io::Result<()> {
-    return dump_tabbed(ast, w, 0);
+pub fn dump(ast: &[Code], w: &mut impl std::io::Write) -> std::io::Result<()> {
+    dump_tabbed(ast, w, 0)
 }

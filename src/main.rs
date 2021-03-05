@@ -2,6 +2,8 @@
 
 use std::io::Read;
 use clap::{App, Arg};
+use bf::interpreter::Interpreter;
+
 fn main() -> std::io::Result<()> {
     let args = App::new("BFII")
                     .author("Mikdore <admin@mikadore.eu>")
@@ -38,7 +40,11 @@ fn main() -> std::io::Result<()> {
         bf::ast::dump(&ast, &mut writer)?;
     }
 
-    
+    Interpreter::run(
+        &ast,
+        &mut std::io::stdin().lock(),
+        &mut std::io::stdout().lock()
+    )?;
 
 
     Ok(())
