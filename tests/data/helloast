@@ -1,0 +1,59 @@
+Chgc(8)
+[
+    Mvcp(1)
+    Chgc(4)
+    [
+        Mvcp(1)
+        Chgc(2)
+        Mvcp(1)
+        Chgc(3)
+        Mvcp(1)
+        Chgc(3)
+        Mvcp(1)
+        Chgc(1)
+        Mvcp(-4)
+        Chgc(-1)
+    ]
+    Mvcp(1)
+    Chgc(1)
+    Mvcp(1)
+    Chgc(1)
+    Mvcp(1)
+    Chgc(-1)
+    Mvcp(2)
+    Chgc(1)
+    [
+        Mvcp(-1)
+    ]
+    Mvcp(-1)
+    Chgc(-1)
+]
+Mvcp(2)
+Dtcp
+Mvcp(1)
+Chgc(-3)
+Dtcp
+Chgc(7)
+Dtcp
+Dtcp
+Chgc(3)
+Dtcp
+Mvcp(2)
+Dtcp
+Mvcp(-1)
+Chgc(-1)
+Dtcp
+Mvcp(-1)
+Dtcp
+Chgc(3)
+Dtcp
+Chgc(-6)
+Dtcp
+Chgc(-8)
+Dtcp
+Mvcp(2)
+Chgc(1)
+Dtcp
+Mvcp(1)
+Chgc(2)
+Dtcp
